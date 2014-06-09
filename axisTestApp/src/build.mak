@@ -41,10 +41,10 @@ $(APPNAME)_LIBS += icpconfig
 $(APPNAME)_LIBS += autosave
 $(APPNAME)_LIBS += utilities
 ## Add other libraries here ##
+$(APPNAME)_LIBS += calc
 $(APPNAME)_LIBS += motorSimSupport motor
 $(APPNAME)_LIBS += asyn
 $(APPNAME)_LIBS += sscan
-$(APPNAME)_LIBS += calc
 
 # axisTest_registerRecordDeviceDriver.cpp derives from axisTest.dbd
 $(APPNAME)_SRCS += $(APPNAME)_registerRecordDeviceDriver.cpp
