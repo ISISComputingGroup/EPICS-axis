@@ -1,0 +1,18 @@
+
+record (ao, "$(P)$(AXIS):SP")
+{
+	field(DESC, "Axis Setpoint")
+	field(OUT, "$(P)$(mAXIS).VAL PP MS")
+	field(PREC, "3")
+    info(archive, "VAL")
+}
+alias("$(P)$(AXIS):SP", "$(P)$(AXIS):SP:RBV")
+
+record (ai, "$(P)$(AXIS)") 
+{
+	field(SCAN, ".1 second")
+	field(DESC, "Current Axis position")
+	field(PREC, "3")
+    field(INP, "$(P)$(mAXIS).RBV")
+    info(archive, "VAL")
+}
