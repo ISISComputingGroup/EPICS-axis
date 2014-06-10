@@ -6,7 +6,6 @@ record (ao, "$(P)$(AXIS):SP")
 	field(PREC, "3")
     info(archive, "VAL")
 }
-alias("$(P)$(AXIS):SP", "$(P)$(AXIS):SP:RBV")
 
 record (ai, "$(P)$(AXIS)") 
 {
@@ -15,4 +14,31 @@ record (ai, "$(P)$(AXIS)")
 	field(PREC, "3")
     field(INP, "$(P)$(mAXIS).RBV")
     info(archive, "VAL")
+}
+
+record (ai, "$(P)$(AXIS):SP:RBV") 
+{
+	field(SCAN, ".1 second")
+	field(DESC, "Current Axis position")
+	field(PREC, "3")
+    field(INP, "$(P)$(mAXIS).VAL")
+    info(archive, "VAL")
+}
+
+#record(ao, "$(P)$(AXIS):BPUT") 
+#{
+#  field(SDIS, "$(P)$(AXIS):SP.PACT  NPP NMS")
+#  field(OUT, "$(P)$(AXIS):SP.VAL  PP MS")
+#}
+
+record (transform, "$(P)$(AXIS):INIT")
+{
+	field(DESC, "Axis Value Init")
+    field(COPT, "Always")
+    field(PINI, "YES")
+	field(INPA, "$(P)$(mAXIS).VAL NPP NMS")
+	field(CLCA, "A")
+	field(OUTA, "$(P)$(AXIS):SP NPP NMS")
+	field(PREC, "3")
+	field(CMTA, "Axis initial setpoint")
 }
