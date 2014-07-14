@@ -42,3 +42,41 @@ record (transform, "$(P)$(AXIS):INIT")
 	field(PREC, "3")
 	field(CMTA, "Axis initial setpoint")
 }
+
+#  do not PINI or autosave - underlying motor record will do this
+record(bo, "$(P)$(AXIS):ABLE:SP") {
+  field(DESC, "Axis enable")
+  field(OUT, "$(P)$(mAXIS)_able PP MS")
+  field(ZNAM, "Enable")
+  field(ONAM, "Disable")
+}
+
+record(bi, "$(P)$(AXIS):ABLE") {
+  field(DESC, "Axis enable status")
+  field(SCAN, "1 second")
+  field(INP, "$(P)$(mAXIS)_able NPP MS")
+  field(ZNAM, "Enable")
+  field(ONAM, "Disable")
+}
+alias("$(P)$(AXIS):ABLE", "$(P)$(AXIS):ABLE:SP:RBV")
+
+record(stringin, "$(P)$(AXIS):MOTOR") {
+  field(DESC, "Axis motor name")
+  field(VAL, "$(mAXIS)")
+}
+
+record(bo, "$(P)$(AXIS):LOCK:SP") {
+  field(DESC, "Axis lock")
+  field(OUT, "$(P)$(mAXIS)_lock PP MS")
+  field(ZNAM, "Unlocked")
+  field(ONAM, "Locked")
+}
+
+record(bi, "$(P)$(AXIS):LOCK") {
+  field(DESC, "Axis lock status")
+  field(SCAN, "1 second")
+  field(INP, "$(P)$(mAXIS)_lock NPP MS")
+  field(ZNAM, "Unlocked")
+  field(ONAM, "Locked")
+}
+alias("$(P)$(AXIS):LOCK", "$(P)$(AXIS):LOCK:SP:RBV")
