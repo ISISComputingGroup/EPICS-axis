@@ -1,7 +1,7 @@
 #kvlb23 - Story #429
 #Addition of alias here to provide aliasing of the motor to the axis.
-#Note that in any st.cmd that loads this it will have to be a logical name in $(AXIS), otherwise there could be naming issues
-alias("$(P)$(mAXIS)","$(P)$(AXIS)")
+#Note that in any st.cmd that loads this it will have to be a logical name in $(AXIS)
+alias("$(P)$(mAXIS)","$(P)$(AXIS):MTR")
 #kvlb23 - Story #429
 
 record (ao, "$(P)$(AXIS):SP")
