@@ -6,7 +6,7 @@ alias("$(P)$(mAXIS)","$(P)$(AXIS):MTR")
 
 record (ao, "$(P)$(AXIS):SP")
 {
-	field(DESC, "Axis Setpoint")
+	field(DESC, "$(AXIS) Axis Setpoint")
 	field(OUT, "$(P)$(mAXIS).VAL PP MS")
 	field(PREC, "3")
     info(archive, "VAL")
@@ -15,16 +15,17 @@ record (ao, "$(P)$(AXIS):SP")
 record (ai, "$(P)$(AXIS)") 
 {
 	field(SCAN, ".1 second")
-	field(DESC, "Current Axis position")
+	field(DESC, "Current $(AXIS) Axis position")
 	field(PREC, "3")
     field(INP, "$(P)$(mAXIS).RBV")
     info(archive, "VAL")
+    info(interest, "HIGH")
 }
 
 record (ai, "$(P)$(AXIS):SP:RBV") 
 {
 	field(SCAN, ".1 second")
-	field(DESC, "Current Axis position")
+	field(DESC, "Current $(AXIS) Axis position")
 	field(PREC, "3")
     field(INP, "$(P)$(mAXIS).VAL")
     info(archive, "VAL")
