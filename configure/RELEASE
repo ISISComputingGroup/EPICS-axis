@@ -44,7 +44,7 @@ ZLIB=$(SUPPORT)/zlib/1-2-8
 ## add other modules here ##
 CALC=$(SUPPORT)/calc/2-9
 SSCAN=$(SUPPORT)/sscan/2-8
-MOTOR=$(SUPPORT)/motor/6-7-1
+MOTOR=$(SUPPORT)/motor/R6-8-1
 ASYN=$(SUPPORT)/asyn/4-22
 BUSY=$(SUPPORT)/busy/1-4
 ICPCONFIG=$(SUPPORT)/icpconfig

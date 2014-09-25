@@ -27,8 +27,8 @@ $(APPNAME)_DBD += caPutLog.dbd
 $(APPNAME)_DBD += utilities.dbd
 ## add other dbd here ##
 $(APPNAME)_DBD += asyn.dbd
-$(APPNAME)_DBD += motorSimSupport.dbd
 $(APPNAME)_DBD += motorSupport.dbd
+$(APPNAME)_DBD += motorSimSupport.dbd
 $(APPNAME)_DBD += calcSupport.dbd 
 
 # Add all the support libraries needed by this IOC
