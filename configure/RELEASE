@@ -32,6 +32,7 @@ EPICS_BASE=C:/Instrument/Apps/EPICS/base/3-14-12-2
 #RULES=/path/to/epics/support/module/rules/x-y
 
 ## ISIS standard modules ##
+PUGIXML=$(SUPPORT)/pugixml
 ICPCONFIG=$(SUPPORT)/icpconfig
 PVDUMP=$(SUPPORT)/pvdump
 DEVIOCSTATS=$(SUPPORT)/devIocStats/3-1-11
@@ -47,6 +48,7 @@ SSCAN=$(SUPPORT)/sscan/2-8
 MOTOR=$(SUPPORT)/motor/R6-8-1
 ASYN=$(SUPPORT)/asyn/4-22
 BUSY=$(SUPPORT)/busy/1-4
+PUGIXML=$(SUPPORT)/pugixml
 ICPCONFIG=$(SUPPORT)/icpconfig
 ONCRPC=$(SUPPORT)/oncrpc/2
 AXIS=$(SUPPORT)/axis
