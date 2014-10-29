@@ -41,6 +41,7 @@ SNCSEQ=$(SUPPORT)/seq/2-1-11
 CAPUTLOG=$(SUPPORT)/caPutLog/3-3-3
 SQLITE=$(SUPPORT)/sqlite
 UTILITIES=$(SUPPORT)/utilities
+PCRE=$(SUPPORT)/pcre
 ZLIB=$(SUPPORT)/zlib/1-2-8
 ## add other modules here ##
 CALC=$(SUPPORT)/calc/2-9
@@ -48,8 +49,6 @@ SSCAN=$(SUPPORT)/sscan/2-8
 MOTOR=$(SUPPORT)/motor/R6-8-1
 ASYN=$(SUPPORT)/asyn/4-22
 BUSY=$(SUPPORT)/busy/1-4
-PUGIXML=$(SUPPORT)/pugixml
-ICPCONFIG=$(SUPPORT)/icpconfig
 ONCRPC=$(SUPPORT)/oncrpc/2
 AXIS=$(SUPPORT)/axis
 
