@@ -45,7 +45,7 @@ UTILITIES=$(SUPPORT)/utilities
 PCRE=$(SUPPORT)/pcre
 ZLIB=$(SUPPORT)/zlib/1-2-8
 ## add other modules here ##
-CALC=$(SUPPORT)/calc/2-9
+CALC=$(SUPPORT)/calc/3-4
 SSCAN=$(SUPPORT)/sscan/2-8
 MOTOR=$(SUPPORT)/motor/R6-8-1
 ASYN=$(SUPPORT)/asyn/4-22
