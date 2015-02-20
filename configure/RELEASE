@@ -48,7 +48,7 @@ ZLIB=$(SUPPORT)/zlib/1-2-8
 ## add other modules here ##
 CALC=$(SUPPORT)/calc/3-4
 SSCAN=$(SUPPORT)/sscan/2-8
-MOTOR=$(SUPPORT)/motor/R6-8-1
+MOTOR=$(SUPPORT)/motor/R6-9
 ASYN=$(SUPPORT)/asyn/4-26
 BUSY=$(SUPPORT)/busy/1-4
 ONCRPC=$(SUPPORT)/oncrpc/2
