@@ -1,8 +1,6 @@
-#kvlb23 - Story #429
 #Addition of alias here to provide aliasing of the motor to the axis.
 #Note that in any st.cmd that loads this it will have to be a logical name in $(AXIS)
 alias("$(P)$(mAXIS)","$(P)$(AXIS):MTR")
-#kvlb23 - Story #429
 
 record (ao, "$(P)$(AXIS):SP")
 {
@@ -10,25 +8,25 @@ record (ao, "$(P)$(AXIS):SP")
 	field(OUT, "$(P)$(mAXIS).VAL PP MS")
 	field(PREC, "3")
     info(archive, "VAL")
+    info(INTEREST, "HIGH")
 }
 
 record (ai, "$(P)$(AXIS)") 
 {
-	field(SCAN, ".1 second")
 	field(DESC, "Current $(AXIS) Axis position")
 	field(PREC, "3")
-    field(INP, "$(P)$(mAXIS).RBV")
+    field(INP, "$(P)$(mAXIS).RBV CP")
     info(archive, "VAL")
-    info(interest, "HIGH")
+    info(INTEREST, "HIGH")
 }
 
 record (ai, "$(P)$(AXIS):SP:RBV") 
 {
-	field(SCAN, ".1 second")
 	field(DESC, "Current $(AXIS) Axis position")
 	field(PREC, "3")
-    field(INP, "$(P)$(mAXIS).VAL")
+    field(INP, "$(P)$(mAXIS).VAL CP")
     info(archive, "VAL")
+    info(INTEREST, "HIGH")
 }
 
 #record(ao, "$(P)$(AXIS):BPUT") 
@@ -59,8 +57,7 @@ record(bo, "$(P)$(AXIS):ABLE:SP") {
 
 record(bi, "$(P)$(AXIS):ABLE") {
   field(DESC, "Axis enable status")
-  field(SCAN, "1 second")
-  field(INP, "$(P)$(mAXIS)_able NPP MS")
+  field(INP, "$(P)$(mAXIS)_able CP MS")
   field(ZNAM, "Enable")
   field(ONAM, "Disable")
 }
@@ -80,9 +77,17 @@ record(bo, "$(P)$(AXIS):LOCK:SP") {
 
 record(bi, "$(P)$(AXIS):LOCK") {
   field(DESC, "Axis lock status")
-  field(SCAN, "1 second")
-  field(INP, "$(P)$(mAXIS)_lock NPP MS")
+  field(INP, "$(P)$(mAXIS)_lock CP MS")
   field(ZNAM, "Unlocked")
   field(ONAM, "Locked")
 }
 alias("$(P)$(AXIS):LOCK", "$(P)$(AXIS):LOCK:SP:RBV")
+
+## update axis archive and monitor deadbands from motor deadbands
+record (seq, "$(P)$(AXIS):AMDEL") {
+	field(PINI, "1")
+	field(DOL1, "$(P)$(mAXIS).ADEL NPP NMS")
+	field(LNK1, "$(P)$(AXIS).ADEL NPP NMS")
+	field(DOL2, "$(P)$(mAXIS).MDEL NPP NMS")
+	field(LNK2, "$(P)$(AXIS).MDEL NPP NMS")
+}
