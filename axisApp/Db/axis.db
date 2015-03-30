@@ -18,7 +18,7 @@ record (ai, "$(P)$(AXIS)")
 	field(PREC, "3")
     field(INP, "$(P)$(mAXIS).RBV CP")
     field(EGU, "")
-    info(archive, "VAL")
+    info(archive, "0.1 VAL")
     info(INTEREST, "HIGH")
 }
 
