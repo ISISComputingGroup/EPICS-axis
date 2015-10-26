@@ -4,17 +4,42 @@ alias("$(P)$(mAXIS)","$(P)$(AXIS):MTR")
 
 record (ao, "$(P)$(AXIS):SP")
 {
-	field(DESC, "$(AXIS) Axis Setpoint")
-	field(OUT, "$(P)$(mAXIS).VAL PP MS")
+	field(DESC, "Axis Setpoint")
+	field(OUT, "$(P)$(AXIS)_write PP MS")
 	field(PREC, "3")
     field(EGU, "")
     info(archive, "VAL")
     info(INTEREST, "HIGH")
 }
 
+record (ao, "$(P)$(AXIS)_write")
+{
+	field(OUT, "$(P)$(mAXIS).VAL PP MS")
+    field(SDIS, "$(P)$(AXIS)_sync.PACT")
+    field(DISV, "1")
+}
+
+record(ao, "$(P)$(AXIS)_sync")
+{
+    field(DOL,  "$(P)$(AXIS):SP:RBV NPP")
+    field(OMSL, "closed_loop")
+    field(OUT,  "$(P)$(AXIS):SP PP")
+}
+
+record (ai, "$(P)$(AXIS):SP:RBV") 
+{
+	field(DESC, "Axis Setpoint readback")
+	field(PREC, "3")
+    field(INP, "$(P)$(mAXIS).VAL CP")
+    field(EGU, "")
+    field(FLNK, "$(P)$(AXIS)_sync")
+    info(archive, "VAL")
+    info(INTEREST, "HIGH")
+}
+
 record (ai, "$(P)$(AXIS)") 
 {
-	field(DESC, "Current $(AXIS) Axis position")
+	field(DESC, "Axis current position")
 	field(PREC, "3")
     field(INP, "$(P)$(mAXIS).RBV CP")
     field(EGU, "")
@@ -24,28 +49,12 @@ record (ai, "$(P)$(AXIS)")
 
 record (longin, "$(P)$(AXIS):DMOV")
 {
-    field(DESC, "$(AXIS) Axis done move")
+    field(DESC, "Axis done move")
     field(INP, "$(P)$(mAXIS).DMOV CP")
     field(EGU, "")
     info(archive, "VAL")
     info(INTEREST, "MEDIUM")
 }
-
-record (ai, "$(P)$(AXIS):SP:RBV") 
-{
-	field(DESC, "Current $(AXIS) Axis position")
-	field(PREC, "3")
-    field(INP, "$(P)$(mAXIS).VAL CP")
-    field(EGU, "")
-    info(archive, "VAL")
-    info(INTEREST, "HIGH")
-}
-
-#record(ao, "$(P)$(AXIS):BPUT") 
-#{
-#  field(SDIS, "$(P)$(AXIS):SP.PACT  NPP NMS")
-#  field(OUT, "$(P)$(AXIS):SP.VAL  PP MS")
-#}
 
 record (transform, "$(P)$(AXIS):INIT")
 {
