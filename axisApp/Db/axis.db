@@ -5,7 +5,7 @@ alias("$(P)$(mAXIS)","$(P)$(AXIS):MTR")
 record (ao, "$(P)$(AXIS):SP")
 {
 	field(DESC, "Axis Setpoint")
-	field(OUT, "$(P)$(AXIS)_write PP MS")
+	field(OUT, "$(P)$(AXIS)_write PP")
 	field(PREC, "3")
     field(EGU, "")
     info(archive, "VAL")
@@ -14,23 +14,23 @@ record (ao, "$(P)$(AXIS):SP")
 
 record (ao, "$(P)$(AXIS)_write")
 {
-	field(OUT, "$(P)$(mAXIS).VAL PP MS")
+	field(OUT, "$(P)$(mAXIS).VAL PP")
     field(SDIS, "$(P)$(AXIS)_sync.PACT")
     field(DISV, "1")
 }
 
 record(ao, "$(P)$(AXIS)_sync")
 {
-    field(DOL,  "$(P)$(AXIS):SP:RBV NPP")
+    field(DOL,  "$(P)$(AXIS):SP:RBV NPP MS")
     field(OMSL, "closed_loop")
-    field(OUT,  "$(P)$(AXIS):SP PP")
+    field(OUT,  "$(P)$(AXIS):SP PP MS")
 }
 
 record (ai, "$(P)$(AXIS):SP:RBV") 
 {
 	field(DESC, "Axis Setpoint readback")
 	field(PREC, "3")
-    field(INP, "$(P)$(mAXIS).VAL CP")
+    field(INP, "$(P)$(mAXIS).VAL CP MS")
     field(EGU, "")
     field(FLNK, "$(P)$(AXIS)_sync")
     info(archive, "VAL")
@@ -41,7 +41,7 @@ record (ai, "$(P)$(AXIS)")
 {
 	field(DESC, "Axis current position")
 	field(PREC, "3")
-    field(INP, "$(P)$(mAXIS).RBV CP")
+    field(INP, "$(P)$(mAXIS).RBV CP MS")
     field(EGU, "")
     info(archive, "0.1 VAL")
     info(INTEREST, "HIGH")
