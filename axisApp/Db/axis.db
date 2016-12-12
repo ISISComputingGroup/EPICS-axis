@@ -68,11 +68,6 @@ record (transform, "$(P)$(AXIS):INIT")
 	field(CMTA, "Axis initial setpoint")
 }
 
-
-
-
-
-
 #  do not PINI or autosave - underlying motor record will do this
 record(bo, "$(P)$(AXIS):ABLE:SP") {
   field(DESC, "Axis enable")
