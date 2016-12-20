@@ -84,6 +84,38 @@ record(bi, "$(P)$(AXIS):ABLE") {
 }
 alias("$(P)$(AXIS):ABLE", "$(P)$(AXIS):ABLE:SP:RBV")
 
+# Alternative: have a read/write $(AXIS):MTR_able PV in sync with $(mAXIS)_able
+# This is used in the motor details OPI
+# The $(AXIS):ABLE PVs above are preserved so their functionality is not broken
+record(bo, "$(P)$(AXIS):MTR_able") {
+  field(DESC, "Axis enable")
+  field(OUT, "$(P)$(AXIS)_able_write PP")
+  field(ZNAM, "Enable")
+  field(ONAM, "Disable")
+}
+
+record(bo, "$(P)$(AXIS)_able_write") {
+  field(OUT, "$(P)$(mAXIS)_able PP MS")
+  field(ZNAM, "Enable")
+  field(ONAM, "Disable")
+  field(SDIS, "$(P)$(AXIS)_able_sync.PACT")
+  field(DISV, "1")
+}
+
+record(bi, "$(P)$(AXIS)_able_read") {
+  field(DESC, "Axis enable readback")
+  field(INP, "$(P)$(mAXIS)_able CP MS")
+  field(ZNAM, "Enable")
+  field(ONAM, "Disable")
+  field(FLNK, "$(P)$(AXIS)_able_sync")
+}
+
+record(bo, "$(P)$(AXIS)_able_sync") {
+  field(DOL, "$(P)$(AXIS)_able_read NPP MS")
+  field(OMSL, "closed_loop")
+  field(OUT, "$(P)$(AXIS):MTR_able PP MS")
+}
+
 record(stringin, "$(P)$(AXIS):MOTOR") {
   field(DESC, "Axis motor name")
   field(VAL, "$(mAXIS)")
