@@ -1,0 +1,20 @@
+
+# Set points do not have units set because it will cause it to be processed thus sending a possibly wrong value
+# to the display 
+
+file $(UTILITIES)/db/unit_setter.template { 
+  pattern 
+    {P,    FROM, TO, PROCESS_FLAGS}
+    
+    {"\$(P)", "\$(mAXIS).EGU", "\$(AXIS)"}
+    {"\$(P)", "\$(mAXIS).EGU", "\$(AXIS):SP"}
+}
+
+
+file axis_base.template { 
+  pattern 
+    {P,    mAXIS, AXIS}
+    
+    {"\$(P)", "\$(mAXIS)", "\$(AXIS)"}
+}
+
