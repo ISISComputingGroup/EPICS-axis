@@ -175,3 +175,13 @@ record(calc, "$(P)$(mAXIS):IN_POSITION") {
     # If moving assume in position, otherwise check that 
     field(CALC, "C||ABS(B)<=ABS(A)")
 }
+
+
+record(calc, "$(P)$(mAXIS):USING_ENCODER") {
+    field(ASG, "READONLY")
+    field(INPA, "$(P)$(mAXIS).MSTA CP MS")
+    field(INPB, "$(P)$(mAXIS).UEIP CP MS")
+    
+    # Bitwise AND on MSTA to select the "encoder present" flag.
+    field(CALC, "((A&256)=256)&&B")
+}
