@@ -121,6 +121,11 @@ record(stringin, "$(P)$(AXIS):MOTOR") {
   field(VAL, "$(mAXIS)")
 }
 
+record(bo, "$(P)$(AXIS):STOP") {
+  field(DESC, "Stop the axis motor")
+  field(OUT, "$(P)$(mAXIS).STOP 1")
+}
+
 record(bo, "$(P)$(AXIS):LOCK:SP") {
   field(DESC, "Axis lock")
   field(OUT, "$(P)$(mAXIS)_lock PP MS")
