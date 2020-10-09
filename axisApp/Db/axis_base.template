@@ -166,6 +166,8 @@ record(calc, "$(P)$(mAXIS):IN_POSITION:TOLERANCE") {
     field(CALC, "(A>0||B>D)?B:((C>0)?C:E)")    
 }
 
+alias("$(P)$(mAXIS):IN_POSITION:TOLERANCE", "$(P)$(AXIS)MTR:IN_POSITION:TOLERANCE")
+
 record(calc, "$(P)$(mAXIS):IN_POSITION") {
     field(ASG, "READONLY")
     field(INPA, "$(P)$(mAXIS):IN_POSITION:TOLERANCE CP MS")
@@ -176,6 +178,10 @@ record(calc, "$(P)$(mAXIS):IN_POSITION") {
     field(CALC, "C||ABS(B)<=ABS(A)")
 }
 
+alias("$(P)$(mAXIS):IN_POSITION", "$(P)$(AXIS):IN_POSITION")
+
+# Shorter alias for cases where full pv would be >39 characters which can't be used in input links
+alias("$(P)$(mAXIS):IN_POSITION", "$(P)$(AXIS):MTR:INPOS")
 
 record(calc, "$(P)$(mAXIS):USING_ENCODER") {
     field(ASG, "READONLY")
@@ -185,3 +191,5 @@ record(calc, "$(P)$(mAXIS):USING_ENCODER") {
     # Bitwise AND on MSTA to select the "encoder present" flag.
     field(CALC, "((A&256)=256)&&B")
 }
+
+alias("$(P)$(mAXIS):USING_ENCODER", "$(P)$(AXIS):USING_ENCODER")
