@@ -168,14 +168,24 @@ record(calc, "$(P)$(mAXIS):IN_POSITION:TOLERANCE") {
 
 alias("$(P)$(mAXIS):IN_POSITION:TOLERANCE", "$(P)$(AXIS):MTR:IN_POSITION:TOLERANCE")
 
-record(calc, "$(P)$(mAXIS):IN_POSITION") {
+record(calc, "$(P)$(mAXIS):DIFF_WITHIN_TOL") {
     field(ASG, "READONLY")
     field(INPA, "$(P)$(mAXIS):IN_POSITION:TOLERANCE CP MS")
     field(INPB, "$(P)$(mAXIS).DIFF CP MS")
-    field(INPC, "$(P)$(mAXIS).MOVN CP MS")
     
     # If moving assume in position, otherwise check that 
-    field(CALC, "C||ABS(B)<=ABS(A)")
+    field(CALC, "ABS(B)<=ABS(A)")
+}
+
+alias("$(P)$(mAXIS):DIFF_WITHIN_TOL", "$(P)$(AXIS):MTR:DIFF_WITHIN_TOL")
+
+record(calc, "$(P)$(mAXIS):IN_POSITION") {
+    field(ASG, "READONLY")
+    field(INPA, "$(P)$(mAXIS):DIFF_WITHIN_TOL CP MS")
+    field(INPB, "$(P)$(mAXIS).MOVN CP MS")
+    
+    # If moving assume in position, otherwise check that 
+    field(CALC, "B||A")
 }
 
 alias("$(P)$(mAXIS):IN_POSITION", "$(P)$(AXIS):MTR:IN_POSITION")
