@@ -6,8 +6,9 @@ file $(UTILITIES)/db/unit_setter.template {
   pattern 
     {P,    FROM, TO, PROCESS_FLAGS}
     
-    {"\$(P)", "\$(mAXIS).EGU", "\$(AXIS)"}
-    {"\$(P)", "\$(mAXIS).EGU", "\$(AXIS):SP"}
+    {"\$(P)", "\$(mAXIS).EGU", "\$(AXIS)", "PP"}
+    {"\$(P)", "\$(mAXIS).EGU", "\$(AXIS):SP:RBV", "PP"}
+    {"\$(P)", "\$(mAXIS).EGU", "\$(AXIS):SP", "NPP"}
 }
 
 

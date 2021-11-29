@@ -2,6 +2,8 @@
 #Note that in any st.cmd that loads this it will have to be a logical name in $(AXIS)
 alias("$(P)$(mAXIS)","$(P)$(AXIS):MTR")
 
+# we autosave EGU as it must be updated NPP by unit setter
+# and this update will not trigger a monitor
 record (ao, "$(P)$(AXIS):SP")
 {
 	field(DESC, "Axis Setpoint")
@@ -9,6 +11,7 @@ record (ao, "$(P)$(AXIS):SP")
 	field(PREC, "3")
     field(EGU, "")
     info(archive, "VAL")
+    info(autosaveFields, "EGU")
     info(INTEREST, "HIGH")
 }
 
@@ -37,6 +40,7 @@ record (ai, "$(P)$(AXIS):SP:RBV")
     info(INTEREST, "HIGH")
 }
 
+# EGU is set by unit setter, so doesn;t need to be autosaved
 record (ai, "$(P)$(AXIS)") 
 {
 	field(DESC, "Axis current position")
