@@ -156,6 +156,8 @@ alias("$(P)$(mAXIS):DIFF_WITHIN_TOL", "$(P)$(AXIS):MTR:DIFF_WITHIN_TOL")
 
 alias("$(P)$(mAXIS):IN_POSITION", "$(P)$(AXIS):MTR:IN_POSITION")
 
+alias("$(P)$(mAXIS)_IOCNAME", "$(P)$(AXIS):MTR_IOCNAME")
+
 alias("$(P)$(mAXIS):USING_ENCODER", "$(P)$(AXIS):USING_ENCODER")
 
 ## if you need to add per-axis fields in, consider putting them in motor\motorStatus.db rather than here - 
